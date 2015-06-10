@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://www.czechowski.pl/blog/the-problem-with-pingdom/2012/07/22</loc>
-    <lastmod>2012-07-22T19:13:00+02:00</lastmod>
-  </url>
-  <url>
-    <loc>http://www.czechowski.pl/blog/intro/2012/07/22</loc>
-    <lastmod>2012-07-22T08:23:00+02:00</lastmod>
-  </url>
-  <url>
     <loc>http://www.czechowski.pl/blog/archives/</loc>
   </url>
   <url>
@@ -16,11 +8,5 @@
   </url>
   <url>
     <loc>http://www.czechowski.pl/about/</loc>
-  </url>
-  <url>
-    <loc>http://www.czechowski.pl/blog/categories/self/</loc>
-  </url>
-  <url>
-    <loc>http://www.czechowski.pl/blog/categories/uptime/</loc>
   </url>
 </urlset>
