@@ -1,26 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://yoursite.com/blog/2012/07/22/the-problem-with-pingdom/</loc>
-    <lastmod>2012-07-22T19:13:00+02:00</lastmod>
+    <loc>http://www.czechowski.pl/blog/archives/</loc>
   </url>
   <url>
-    <loc>http://yoursite.com/blog/2012/07/22/intro/</loc>
-    <lastmod>2012-07-22T08:23:00+02:00</lastmod>
+    <loc>http://www.czechowski.pl/</loc>
   </url>
   <url>
-    <loc>http://yoursite.com/blog/archives/</loc>
-  </url>
-  <url>
-    <loc>http://yoursite.com/</loc>
-  </url>
-  <url>
-    <loc>http://yoursite.com/about/</loc>
-  </url>
-  <url>
-    <loc>http://yoursite.com/blog/categories/self/</loc>
-  </url>
-  <url>
-    <loc>http://yoursite.com/blog/categories/uptime/</loc>
+    <loc>http://www.czechowski.pl/about/</loc>
   </url>
 </urlset>
