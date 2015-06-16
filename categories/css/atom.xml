@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: css | Tomasz Czechowski]]></title>
-  <link href="http://www.czechowski.pl/blog/categories/css/atom.xml" rel="self"/>
-  <link href="http://www.czechowski.pl/"/>
-  <updated>2015-06-15T21:55:16+02:00</updated>
-  <id>http://www.czechowski.pl/</id>
+  <link href="http://czechowski.pl/categories/css/atom.xml" rel="self"/>
+  <link href="http://czechowski.pl/"/>
+  <updated>2015-06-16T22:11:09+02:00</updated>
+  <id>http://czechowski.pl/</id>
   <author>
     <name><![CDATA[Tomasz Czechowski]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Introduction into box-model and box-sizing in CSS]]></title>
-    <link href="http://www.czechowski.pl/blog/introduction-into-box-model-and-box-sizing-in-css/2015/06/15"/>
+    <link href="http://czechowski.pl/introduction-into-box-model-and-box-sizing-in-css/2015/06/15"/>
     <updated>2015-06-15T21:39:50+02:00</updated>
-    <id>http://www.czechowski.pl/blog/introduction-into-box-model-and-box-sizing-in-css/2015/06/introduction-into-box-model-and-box-sizing-in-css</id>
+    <id>http://czechowski.pl/introduction-into-box-model-and-box-sizing-in-css/2015/06/introduction-into-box-model-and-box-sizing-in-css</id>
     <content type="html"><![CDATA[<p>Every HTML element is represented as box and has four edges: margin, border, padding, content. Web developers tools in Chrome has nice feature to display it in graphical way:</p>
 
 <p class="article-text-center">
@@ -139,11 +139,11 @@
 
 <table class="table">
     <thead>
-        <th><img src="http://www.czechowski.pl/images/posts/icons/browser-chrome.png" alt="Chrome browser" width="35" height="35"></th>
-        <th><img src="http://www.czechowski.pl/images/posts/icons/browser-ie.png" alt="Internet Explorer browser" width="35" height="35"></th>
-        <th><img src="http://www.czechowski.pl/images/posts/icons/browser-firefox.jpg" alt="Firefox browser" width="35" height="35"></th>
-        <th><img src="http://www.czechowski.pl/images/posts/icons/browser-safari.png" alt="Safari browser" width="35" height="35"></th>
-        <th><img src="http://www.czechowski.pl/images/posts/icons/browser-opera.png" alt="Opera browser" width="35" height="35"></th>
+        <th><img src="http://czechowski.pl/images/posts/icons/browser-chrome.png" alt="Chrome browser" width="35" height="35"></th>
+        <th><img src="http://czechowski.pl/images/posts/icons/browser-ie.png" alt="Internet Explorer browser" width="35" height="35"></th>
+        <th><img src="http://czechowski.pl/images/posts/icons/browser-firefox.jpg" alt="Firefox browser" width="35" height="35"></th>
+        <th><img src="http://czechowski.pl/images/posts/icons/browser-safari.png" alt="Safari browser" width="35" height="35"></th>
+        <th><img src="http://czechowski.pl/images/posts/icons/browser-opera.png" alt="Opera browser" width="35" height="35"></th>
     </thead>
     <tbody>
         <tr>
