@@ -1,4 +1,4 @@
 User-agent: *
-Disallow: 
+Allow: /
 
-Sitemap: http://czechowski.pl/sitemap.xml 
+Sitemap: http://czechowski.pl/sitemap.xml
