@@ -4,7 +4,7 @@
   <title><![CDATA[Tomasz Czechowski]]></title>
   <link href="http://czechowski.pl/atom.xml" rel="self"/>
   <link href="http://czechowski.pl/"/>
-  <updated>2015-06-21T12:04:20+02:00</updated>
+  <updated>2015-06-22T19:42:03+02:00</updated>
   <id>http://czechowski.pl/</id>
   <author>
     <name><![CDATA[Tomasz Czechowski]]></name>
@@ -15,7 +15,7 @@
   
   <entry>
     <title type="html"><![CDATA[Introduction into box-model and box-sizing in CSS]]></title>
-    <link href="http://czechowski.pl/introduction-into-box-model-and-box-sizing-in-css/2015/06/15"/>
+    <link href="http://czechowski.pl/introduction-into-box-model-and-box-sizing-in-css/2015/06/15/"/>
     <updated>2015-06-15T21:39:50+02:00</updated>
     <id>http://czechowski.pl/introduction-into-box-model-and-box-sizing-in-css/2015/06/introduction-into-box-model-and-box-sizing-in-css</id>
     <content type="html"><![CDATA[<p>Every HTML element is represented as box and has four edges: margin, border, padding, content. Web developers tools in Chrome has nice feature to display it in graphical way:</p>
