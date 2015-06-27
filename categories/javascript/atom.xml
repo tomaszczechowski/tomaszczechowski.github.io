@@ -4,7 +4,7 @@
   <title><![CDATA[Category: javascript | Tomasz Czechowski]]></title>
   <link href="http://czechowski.pl/categories/javascript/atom.xml" rel="self"/>
   <link href="http://czechowski.pl/"/>
-  <updated>2015-06-27T17:09:21+02:00</updated>
+  <updated>2015-06-27T17:12:22+02:00</updated>
   <id>http://czechowski.pl/</id>
   <author>
     <name><![CDATA[Tomasz Czechowski]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Automatically unbind events when $scope is destroyed]]></title>
-    <link href="http://czechowski.pl/blog/2015/06/23/automatically-unbind-events-when-$scope-is-destroyed/"/>
-    <updated>2015-06-23T18:31:45+02:00</updated>
-    <id>http://czechowski.pl/blog/2015/06/23/automatically-unbind-events-when-$scope-is-destroyed</id>
+    <link href="http://czechowski.pl/blog/2015/06/27/automatically-unbind-events-when-$scope-is-destroyed/"/>
+    <updated>2015-06-27T16:31:45+02:00</updated>
+    <id>http://czechowski.pl/blog/2015/06/27/automatically-unbind-events-when-$scope-is-destroyed</id>
     <content type="html"><![CDATA[<p>During daily development I runs into specific problem with unbinding events. Along with application growth I had a lot of events to removed. To do it we can write simply code e.g:</p>
 
 <p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
