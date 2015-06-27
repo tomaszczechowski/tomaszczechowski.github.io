@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: angularjs | Tomasz Czechowski]]></title>
+  <link href="http://czechowski.pl/categories/angularjs/atom.xml" rel="self"/>
+  <link href="http://czechowski.pl/"/>
+  <updated>2015-06-27T17:09:21+02:00</updated>
+  <id>http://czechowski.pl/</id>
+  <author>
+    <name><![CDATA[Tomasz Czechowski]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Automatically unbind events when $scope is destroyed]]></title>
+    <link href="http://czechowski.pl/blog/2015/06/23/automatically-unbind-events-when-$scope-is-destroyed/"/>
+    <updated>2015-06-23T18:31:45+02:00</updated>
+    <id>http://czechowski.pl/blog/2015/06/23/automatically-unbind-events-when-$scope-is-destroyed</id>
+    <content type="html"><![CDATA[<p>During daily development I runs into specific problem with unbinding events. Along with application growth I had a lot of events to removed. To do it we can write simply code e.g:</p>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">eventDeregistrationFn</span> <span class="o">=</span> <span class="nx">$scope</span><span class="p">.</span><span class="nx">$on</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">lsquo</span><span class="p">;</span><span class="nx">name</span><span class="o">&amp;</span><span class="nx">rsquo</span><span class="p">;,</span> <span class="nx">callback</span><span class="p">);</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">$scope</span><span class="p">.</span><span class="nx">$on</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">lsquo</span><span class="p">;</span><span class="nx">$destroy</span><span class="o">&amp;</span><span class="nx">rsquo</span><span class="p">;,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">eventDeregistrationFn</span><span class="p">();</span>
+</span><span class='line'><span class="p">});</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>And it&rsquo;s done. We can simply deregistrate event. How it exatly works? Let&rsquo;s take a quick look at Angular core code:</p>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$on</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">listener</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="p">(</span><span class="o">&amp;</span><span class="nx">hellip</span><span class="p">;)</span>
+</span><span class='line'>  <span class="k">return</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">indexOfListener</span> <span class="o">=</span> <span class="nx">namedListeners</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">listener</span><span class="p">);</span>
+</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="nx">indexOfListener</span> <span class="o">!==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">namedListeners</span><span class="p">[</span><span class="nx">indexOfListener</span><span class="p">]</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+</span><span class='line'>      <span class="nx">decrementListenerCount</span><span class="p">(</span><span class="nx">self</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">name</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>  <span class="p">};</span>
+</span><span class='line'><span class="p">},</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>Function <code>$on</code> which is used to register listeners returns another function. Inside body of it is set <code>namedListeners[indexOfListener]</code> to <code>null</code> which means that callback of event is removed. And that&rsquo;s all event is unbinded.</p>
+
+<p>Everything is great if we have one, two or max three such events to deregister. But when we have them more and more? duplicating code <code>$scope.$on(&lsquo;$destroy&rsquo;)</code> is very inefficient. I don&rsquo;t want to take care about deregistering events and I want to automate this process. But how? today I figured out that I can create simply service which will handle two main behaviours: registration and deregistration events. I wrote simply service, so simply that I was afraid to publish it here ;)</p>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">lsquo</span><span class="p">;</span><span class="nx">App</span><span class="p">.</span><span class="nx">Main</span><span class="o">&amp;</span><span class="nx">rsquo</span><span class="p">;);</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span><span class="o">&gt;&lt;</span><span class="nx">code</span><span class="o">&gt;</span><span class="nx">app</span><span class="p">.</span><span class="nx">service</span><span class="p">(</span><span class="s1">&#39;EventService&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">this</span><span class="p">.</span><span class="nx">on</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">listener</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="kd">var</span> <span class="nx">deregistrationFn</span> <span class="o">=</span> <span class="nx">$scope</span><span class="p">.</span><span class="nx">$on</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">listener</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="nx">$scope</span><span class="p">.</span><span class="nx">$on</span><span class="p">(</span><span class="s1">&#39;$destroy&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>            <span class="nx">deregistrationFn</span><span class="p">();</span>
+</span><span class='line'>        <span class="p">});</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">})();</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>and example of usage:</p>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">EventService</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">lsquo</span><span class="p">;</span><span class="nx">name</span><span class="o">&amp;</span><span class="nx">rsquo</span><span class="p">;,</span> <span class="nx">callback</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>that&rsquo;s all! I don&rsquo;t need to include created event into <code>$destroy</code> event. It&rsquo;s done by EventService.</p>
+
+<p>If you have some comments feel free to write them below. Cheers.</p>
+
+<h1>Compability</h1>
+
+<table class="table w50p">
+    <thead>
+        <th><img src="http://czechowski.pl/images/posts/icons/angular.png" alt="Angular" width="35" height="35"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                Tested on:
+                Angular 1.3.15
+            </td>
+        </tr>
+</table>
+
+]]></content>
+  </entry>
+  
+</feed>

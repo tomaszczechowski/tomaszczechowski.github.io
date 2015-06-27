@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://czechowski.pl/blog/introduction-into-box-model-and-box-sizing-in-css/2015/06/15/</loc>
-    <lastmod>2015-06-15T21:39:50+02:00</lastmod>
+    <loc>http://czechowski.pl/blog/2015/06/27/introduction-into-box-model-and-box-sizing-in-css/</loc>
+    <lastmod>2015-06-27T15:27:50+02:00</lastmod>
+  </url>
+  <url>
+    <loc>http://czechowski.pl/blog/2015/06/23/automatically-unbind-events-when-$scope-is-destroyed/</loc>
+    <lastmod>2015-06-23T18:31:45+02:00</lastmod>
   </url>
   <url>
     <loc>http://czechowski.pl/archives/</loc>
@@ -14,6 +18,16 @@
     <loc>http://czechowski.pl/about/</loc>
   </url>
   <url>
+    <loc>http://czechowski.pl/categories/angularjs/</loc>
+  </url>
+  <url>
+    <loc>http://czechowski.pl/categories/javascript/</loc>
+  </url>
+  <url>
     <loc>http://czechowski.pl/categories/css/</loc>
+  </url>
+  <url>
+    <loc>http://czechowski.pl/examples/eventservice/demo.html</loc>
+    <lastmod>2015-06-27T15:57:28+02:00</lastmod>
   </url>
 </urlset>

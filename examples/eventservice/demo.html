@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html ng-app="App">
+<head>
+	<title>EventService - demo - czechowski.pl</title>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.js"></script>
+</head>
+<body ng-controller="MainCtrl">
+	{{test}}
+	<ol>
+		<li ng-repeat="step in steps">{{step}}</li>
+	</ol>
+
+	<script type="text/javascript">
+		(function () {
+			var app = angular.module('App', [])
+
+			.service('EventService', function () {
+				this.on = function ($scope, name, listener) {
+					var deregistrationFn = $scope.$on(name, listener);
+
+					$scope.$on('$destroy', function () {
+						$scope.steps.push('Destroyed event in event service');
+						deregistrationFn();
+					});
+				}
+			})
+
+			.controller('MainCtrl', ['$scope', 'EventService', function ($scope, EventService) {
+				$scope.steps = [];
+				$scope.test= 'tomek';
+
+				var deregistrationFn = $scope.$on('Hi!', function () {
+					$scope.steps.push('Handle \'Hi\' from Angular.');
+				});
+
+				EventService.on($scope, 'Hi!', function () {
+					$scope.steps.push('Handle \'Hi\' from Event Service.');
+				});
+
+				$scope.$on('$destroy', function () {
+					$scope.steps.push('Destroyed event in $scope.$on(\'destroyed\')');
+					deregistrationFn();
+				});
+
+				$scope.$broadcast('Hi!');
+
+				$scope.$destroy();
+
+			}]);
+
+		})();
+	</script>
+
+</body>
+</html>
